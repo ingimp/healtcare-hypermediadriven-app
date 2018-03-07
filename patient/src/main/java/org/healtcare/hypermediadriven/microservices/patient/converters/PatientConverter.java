@@ -15,45 +15,46 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author ldicesare
+ * @email ing.dicesare@gmail.com
  *
  */
 @Component
 public class PatientConverter {
-    static final Logger LOGGER = LoggerFactory.getLogger(PatientConverter.class);
-    @Autowired
-    private ModelMapper mapper;
+	static final Logger LOGGER = LoggerFactory.getLogger(PatientConverter.class);
+	@Autowired
+	private ModelMapper mapper;
 
-    /**
-     * @param entity
-     * @return
-     * @throws ParseException
-     */
-    public PatientDTO convert(final Patient entity) throws ParseException {
-        PatientDTO dto = mapper.map(entity, PatientDTO.class);
-        return dto;
-    }
+	/**
+	 * @param entity
+	 * @return
+	 * @throws ParseException
+	 */
+	public PatientDTO convert(final Patient entity) throws ParseException {
+		PatientDTO dto = mapper.map(entity, PatientDTO.class);
+		return dto;
+	}
 
-    public PatientDTO convert(final Optional<Patient> entity) throws ParseException {
-        PatientDTO dto = mapper.map(entity.get(), PatientDTO.class);
-        return dto;
-    }
+	public PatientDTO convert(final Optional<Patient> entity) throws ParseException {
+		PatientDTO dto = mapper.map(entity.get(), PatientDTO.class);
+		return dto;
+	}
 
-    /**
-     * @param entities
-     * @return
-     * @throws ParseException
-     */
-    public List<PatientDTO> convert(final List<Patient> entities) throws ParseException {
-        List<PatientDTO> dtos = new ArrayList<>();
-        for (Patient entity : entities) {
-            dtos.add(mapper.map(entity, PatientDTO.class));
-        }
-        return dtos;
-    }
+	/**
+	 * @param entities
+	 * @return
+	 * @throws ParseException
+	 */
+	public List<PatientDTO> convert(final List<Patient> entities) throws ParseException {
+		List<PatientDTO> dtos = new ArrayList<>();
+		for (Patient entity : entities) {
+			dtos.add(mapper.map(entity, PatientDTO.class));
+		}
+		return dtos;
+	}
 
-    public Patient convert(final PatientDTO dto) throws ParseException {
-        Patient entity = mapper.map(dto, Patient.class);
-        return entity;
-    }
+	public Patient convert(final PatientDTO dto) throws ParseException {
+		Patient entity = mapper.map(dto, Patient.class);
+		return entity;
+	}
 
 }

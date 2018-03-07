@@ -11,42 +11,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.expression.ParseException;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author ldicesare
+ * @email ing.dicesare@gmail.com
+ *
+ */
 @Service
 public class AllergyConverter {
 
-    @Autowired
-    private ModelMapper mapper;
+	@Autowired
+	private ModelMapper mapper;
 
-    public AllergyDTO convert(final Allergy entity) {
-        return entity == null ? null : mapper.map(entity, AllergyDTO.class);
-    }
+	public AllergyDTO convert(final Allergy entity) {
+		return entity == null ? null : mapper.map(entity, AllergyDTO.class);
+	}
 
-    public Optional<AllergyDTO> convert(final Optional<Allergy> entity) throws ParseException {
-        AllergyDTO dto = mapper.map(entity.get(), AllergyDTO.class);
-        return Optional.of(dto);
-    }
+	public Optional<AllergyDTO> convert(final Optional<Allergy> entity) throws ParseException {
+		AllergyDTO dto = mapper.map(entity.get(), AllergyDTO.class);
+		return Optional.of(dto);
+	}
 
-    public List<AllergyDTO> convert(final List<Allergy> entities) {
-        List<AllergyDTO> dtos = new ArrayList<>();
-        for (Allergy entity : entities) {
-            dtos.add(mapper.map(entity, AllergyDTO.class));
-        }
-        return dtos;
-    }
+	public List<AllergyDTO> convert(final List<Allergy> entities) {
+		List<AllergyDTO> dtos = new ArrayList<>();
+		for (Allergy entity : entities) {
+			dtos.add(mapper.map(entity, AllergyDTO.class));
+		}
+		return dtos;
+	}
 
-    public List<AllergyDTO> convert(final List<Allergy> entities, final String patientUUID) {
-        List<AllergyDTO> dtos = new ArrayList<>();
-        for (Allergy entity : entities) {
-            AllergyDTO dto = mapper.map(entity, AllergyDTO.class);
-            dto.setPatientUUID(patientUUID);
-            dtos.add(dto);
-        }
-        return dtos;
-    }
+	public List<AllergyDTO> convert(final List<Allergy> entities, final String patientUUID) {
+		List<AllergyDTO> dtos = new ArrayList<>();
+		for (Allergy entity : entities) {
+			AllergyDTO dto = mapper.map(entity, AllergyDTO.class);
+			dto.setPatientUUID(patientUUID);
+			dtos.add(dto);
+		}
+		return dtos;
+	}
 
-    public Allergy convert(final AllergyDTO dto) {
-        Allergy entity = mapper.map(dto, Allergy.class);
-        return entity;
-    }
+	public Allergy convert(final AllergyDTO dto) {
+		Allergy entity = mapper.map(dto, Allergy.class);
+		return entity;
+	}
 
 }

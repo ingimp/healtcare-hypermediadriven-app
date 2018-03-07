@@ -6,27 +6,34 @@ import org.healtcare.hypermediadriven.microservices.patient.domain.Allergy;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+/**
+ * @author ldicesare
+ * @email ing.dicesare@gmail.com
+ *
+ */
 @Repository
 public interface AllergyRepository extends JpaRepository<Allergy, Long> {
-    /**
-     * @param allergyName
-     * @return
-     */
-    public Allergy findByAllergyName(String allergyName);
+	/**
+	 * @param allergyName
+	 * @return
+	 */
+	public Allergy findByAllergyName(String allergyName);
 
-    // @Query("select a from Allergy a join Patient p where p.patientUUID = :patientUUID")
-    // public List<Allergy> findByPatientUUID(@Param("patientUUID") String patientUUID);
+	// @Query("select a from Allergy a join Patient p where p.patientUUID =
+	// :patientUUID")
+	// public List<Allergy> findByPatientUUID(@Param("patientUUID") String
+	// patientUUID);
 
-    /**
-     * @param patientUUID
-     * @return
-     */
-    public List<Allergy> findByPatients_PatientUUID(String patientUUID);
+	/**
+	 * @param patientUUID
+	 * @return
+	 */
+	public List<Allergy> findByPatients_PatientUUID(String patientUUID);
 
-    /**
-     * @param allergyUUID
-     * @return
-     */
-    public Allergy findByAllergyUUID(String allergyUUID);
+	/**
+	 * @param allergyUUID
+	 * @return
+	 */
+	public Allergy findByAllergyUUID(String allergyUUID);
 
 }

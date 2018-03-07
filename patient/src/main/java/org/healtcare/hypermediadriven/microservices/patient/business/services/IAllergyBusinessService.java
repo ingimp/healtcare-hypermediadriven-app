@@ -7,22 +7,23 @@ import org.healtcare.hypermediadriven.microservices.patient.exceptions.Hypermedi
 
 /**
  * @author ldicesare
+ * @email ing.dicesare@gmail.com
  *
  */
 public interface IAllergyBusinessService {
 
-    /**
-     * @param patientUUID
-     * @return
-     * @throws HypermediaGenericException
-     */
-    public List<AllergyDTO> readAllergiesByPatient(String patientUUID) throws HypermediaGenericException;
+	/**
+	 * @param patientUUID
+	 * @return
+	 * @throws HypermediaGenericException
+	 */
+	public List<AllergyDTO> readAllergiesByPatient(String patientUUID) throws HypermediaGenericException;
 
-    /**
-     * @param allergyUUID
-     * @return
-     * @throws HypermediaGenericException
-     */
-    public AllergyDTO readAllergy(String allergyUUID) throws HypermediaGenericException;
+	/**
+	 * @param allergyUUID
+	 * @return
+	 * @throws HypermediaGenericException
+	 */
+	public AllergyDTO readAllergy(String allergyUUID) throws HypermediaGenericException;
 
 }

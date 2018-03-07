@@ -6,88 +6,93 @@ import java.util.Set;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * @author ldicesare
+ * @email ing.dicesare@gmail.com
+ *
+ */
 public class PatientDTO {
-    private String patientUUID;
-    @NotNull
-    private String firstName;
-    @NotNull
-    private String lastName;
-    @NotNull
-    private String gender;
-    private String patientDescription;
-    private boolean hospitalized;
-    private Set<AllergyDTO> allergies = new HashSet<>();
-    private HealtConditionDTO healtCondition;
+	private String patientUUID;
+	@NotNull
+	private String firstName;
+	@NotNull
+	private String lastName;
+	@NotNull
+	private String gender;
+	private String patientDescription;
+	private boolean hospitalized;
+	private Set<AllergyDTO> allergies = new HashSet<>();
+	private HealtConditionDTO healtCondition;
 
-    public PatientDTO() {
-    }
+	public PatientDTO() {
+	}
 
-    public String getPatientUUID() {
-	return patientUUID;
-    }
+	public String getPatientUUID() {
+		return patientUUID;
+	}
 
-    public void setPatientUUID(String patientUUID) {
-	this.patientUUID = patientUUID;
-    }
+	public void setPatientUUID(String patientUUID) {
+		this.patientUUID = patientUUID;
+	}
 
-    public String getFirstName() {
-	return firstName;
-    }
+	public String getFirstName() {
+		return firstName;
+	}
 
-    public void setFirstName(String firstName) {
-	this.firstName = firstName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    public String getLastName() {
-	return lastName;
-    }
+	public String getLastName() {
+		return lastName;
+	}
 
-    public void setLastName(String lastName) {
-	this.lastName = lastName;
-    }
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-    public String getGender() {
-	return gender;
-    }
+	public String getGender() {
+		return gender;
+	}
 
-    public void setGender(String gender) {
-	this.gender = gender;
-    }
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 
-    public String getPatientDescription() {
-	return patientDescription;
-    }
+	public String getPatientDescription() {
+		return patientDescription;
+	}
 
-    public void setPatientDescription(String patientDescription) {
-	this.patientDescription = patientDescription;
-    }
+	public void setPatientDescription(String patientDescription) {
+		this.patientDescription = patientDescription;
+	}
 
-    public boolean getHospitalized() {
-	return hospitalized;
-    }
+	public boolean getHospitalized() {
+		return hospitalized;
+	}
 
-    public void setHospitalized(boolean hospitalized) {
-	this.hospitalized = hospitalized;
-    }
+	public void setHospitalized(boolean hospitalized) {
+		this.hospitalized = hospitalized;
+	}
 
-    public Set<AllergyDTO> getAllergies() {
-	return allergies;
-    }
+	public Set<AllergyDTO> getAllergies() {
+		return allergies;
+	}
 
-    public void setAllergies(Set<AllergyDTO> allergies) {
-	this.allergies = allergies;
-    }
+	public void setAllergies(Set<AllergyDTO> allergies) {
+		this.allergies = allergies;
+	}
 
-    public HealtConditionDTO getHealtCondition() {
-	return healtCondition;
-    }
+	public HealtConditionDTO getHealtCondition() {
+		return healtCondition;
+	}
 
-    public void setHealtCondition(HealtConditionDTO healtCondition) {
-	this.healtCondition = healtCondition;
-    }
+	public void setHealtCondition(HealtConditionDTO healtCondition) {
+		this.healtCondition = healtCondition;
+	}
 
-    public boolean addAll(Collection<? extends AllergyDTO> c) {
-	return allergies.addAll(c);
-    }
+	public boolean addAll(Collection<? extends AllergyDTO> c) {
+		return allergies.addAll(c);
+	}
 
 }

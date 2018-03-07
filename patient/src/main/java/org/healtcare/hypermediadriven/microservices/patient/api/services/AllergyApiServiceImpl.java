@@ -12,36 +12,40 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author ldicesare
+ * @email ing.dicesare@gmail.com
  *
  */
 @Service
 public class AllergyApiServiceImpl implements IAllergyApiService<AllergyResource> {
-    @Autowired
-    private AllergyResourceAssembler assembler;
+	@Autowired
+	private AllergyResourceAssembler assembler;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.healtcare.hypermediadriven.patient.api.services.IAllergyApiService#buildResource(java.lang.Iterable)
-     */
-    @Override
-    public AllergyResource buildResource(AllergyDTO dto) throws HypermediaGenericException {
-        return dto == null ? null : assembler.toResource(dto);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * org.healtcare.hypermediadriven.patient.api.services.IAllergyApiService#
+	 * buildResource(java.lang.Iterable)
+	 */
+	@Override
+	public AllergyResource buildResource(AllergyDTO dto) throws HypermediaGenericException {
+		return dto == null ? null : assembler.toResource(dto);
+	}
 
-    @Override
-    public Optional<AllergyResource> buildResourceAsOptional(AllergyDTO dto) throws HypermediaGenericException {
-        return dto == null ? Optional.ofNullable(null) : Optional.of(assembler.toResource(dto));
-    }
+	@Override
+	public Optional<AllergyResource> buildResourceAsOptional(AllergyDTO dto) throws HypermediaGenericException {
+		return dto == null ? Optional.ofNullable(null) : Optional.of(assembler.toResource(dto));
+	}
 
-    @Override
-    public Resources<AllergyResource> buildResource(Iterable<AllergyDTO> dtos, String self) throws HypermediaGenericException {
-        return assembler.toEmbeddedList(dtos, self);
-    }
+	@Override
+	public Resources<AllergyResource> buildResource(Iterable<AllergyDTO> dtos, String self)
+			throws HypermediaGenericException {
+		return assembler.toEmbeddedList(dtos, self);
+	}
 
-    @Override
-    public AllergyResource buildResource(AllergyDTO dto, boolean detailed) throws HypermediaGenericException {
-        return detailed ? assembler.toDetailedResource(dto) : assembler.toResource(dto);
-    }
+	@Override
+	public AllergyResource buildResource(AllergyDTO dto, boolean detailed) throws HypermediaGenericException {
+		return detailed ? assembler.toDetailedResource(dto) : assembler.toResource(dto);
+	}
 
 }

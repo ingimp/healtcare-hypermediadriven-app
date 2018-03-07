@@ -5,15 +5,16 @@ import org.healtcare.hypermediadriven.microservices.patient.exceptions.Hypermedi
 
 /**
  * @author ldicesare
+ * @email ing.dicesare@gmail.com
  *
  */
 public interface IHealtConditionBusinessService {
 
-    /**
-     * @param patientUUID
-     * @return
-     * @throws HypermediaGenericException
-     */
-    public HealtConditionDTO readHealtConditionByPatient(String patientUUID) throws HypermediaGenericException;
+	/**
+	 * @param patientUUID
+	 * @return
+	 * @throws HypermediaGenericException
+	 */
+	public HealtConditionDTO readHealtConditionByPatient(String patientUUID) throws HypermediaGenericException;
 
 }

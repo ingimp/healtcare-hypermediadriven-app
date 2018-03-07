@@ -24,50 +24,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author ldicesare
+ * @email ing.dicesare@gmail.com
  *
  */
 @RestController
 @ExposesResourceFor(PatientResource.class)
 @RequestMapping(value = "healtcare/hypermediadriven/api/v1/patients", produces = "application/hal+json")
 public class PatientController {
-    @Autowired
-    private IPatientBusinessService<PatientDTO> patientBusinessService;
-    @Autowired
-    private IPatientApiService<PatientResource> patientApiService;
+	@Autowired
+	private IPatientBusinessService<PatientDTO> patientBusinessService;
+	@Autowired
+	private IPatientApiService<PatientResource> patientApiService;
 
-    @GetMapping
-    public ResponseEntity<Resources<PatientResource>> showAllPatients() {
-	return ResponseEntity.ok(patientApiService.buildResources(patientBusinessService.readAllPatients()));
-    }
+	@GetMapping
+	public ResponseEntity<Resources<PatientResource>> showAllPatients() {
+		return ResponseEntity.ok(patientApiService.buildResources(patientBusinessService.readAllPatients()));
+	}
 
-    @GetMapping(value = "/{uuid}")
-    public ResponseEntity<PatientResource> showPatient(@PathVariable(value = "uuid") final String uuid,
-	    @RequestParam(value = "detailed", required = false, defaultValue = "false") boolean detailed) {
-	return patientApiService.buildResourceAsOptional(patientBusinessService.readPatient(uuid), detailed)
-		.map(p -> ResponseEntity.ok(p)).orElseThrow(() -> new PatientNotFoundException(uuid));
+	@GetMapping(value = "/{uuid}")
+	public ResponseEntity<PatientResource> showPatient(@PathVariable(value = "uuid") final String uuid,
+			@RequestParam(value = "detailed", required = false, defaultValue = "false") boolean detailed) {
+		return patientApiService.buildResourceAsOptional(patientBusinessService.readPatient(uuid), detailed)
+				.map(p -> ResponseEntity.ok(p)).orElseThrow(() -> new PatientNotFoundException(uuid));
 
-    }
+	}
 
-    @PostMapping
-    public ResponseEntity<Void> newPatient(@Valid @RequestBody final PatientDTO newPatient) {
-	patientBusinessService.createPatient(newPatient);
-	return new ResponseEntity<Void>(new HttpHeaders(), HttpStatus.CREATED);
-    }
+	@PostMapping
+	public ResponseEntity<Void> newPatient(@Valid @RequestBody final PatientDTO newPatient) {
+		patientBusinessService.createPatient(newPatient);
+		return new ResponseEntity<Void>(new HttpHeaders(), HttpStatus.CREATED);
+	}
 
-    @PutMapping(value = "/{uuid}/hospitalize")
-    public ResponseEntity<Void> hospitalizePatient(@PathVariable(value = "uuid") final String uuid) {
-	PatientDTO patient = patientBusinessService.readPatient(uuid);
-	patient.setHospitalized(true);
-	patientBusinessService.hospitalize(patient);
-	return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-    }
+	@PutMapping(value = "/{uuid}/hospitalize")
+	public ResponseEntity<Void> hospitalizePatient(@PathVariable(value = "uuid") final String uuid) {
+		PatientDTO patient = patientBusinessService.readPatient(uuid);
+		patient.setHospitalized(true);
+		patientBusinessService.hospitalize(patient);
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
 
-    @PutMapping(value = "/{uuid}/dehospitalize")
-    public ResponseEntity<Void> deHospitalizePatient(@PathVariable(value = "uuid") final String uuid) {
-	PatientDTO patient = patientBusinessService.readPatient(uuid);
-	patient.setHospitalized(false);
-	patientBusinessService.hospitalize(patient);
-	return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
-    }
+	@PutMapping(value = "/{uuid}/dehospitalize")
+	public ResponseEntity<Void> deHospitalizePatient(@PathVariable(value = "uuid") final String uuid) {
+		PatientDTO patient = patientBusinessService.readPatient(uuid);
+		patient.setHospitalized(false);
+		patientBusinessService.hospitalize(patient);
+		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
+	}
 
 }

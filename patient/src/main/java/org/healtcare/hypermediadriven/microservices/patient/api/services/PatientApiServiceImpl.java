@@ -9,27 +9,32 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resources;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author ldicesare
+ * @email ing.dicesare@gmail.com
+ *
+ */
 @Service
 public class PatientApiServiceImpl implements IPatientApiService<PatientResource> {
-    @Autowired
-    private PatientResourceAssembler assembler;
+	@Autowired
+	private PatientResourceAssembler assembler;
 
-    @Override
-    public Resources<PatientResource> buildResources(Iterable<PatientDTO> dtos) {
-	return dtos == null ? null : assembler.toEmbeddedList(dtos);
+	@Override
+	public Resources<PatientResource> buildResources(Iterable<PatientDTO> dtos) {
+		return dtos == null ? null : assembler.toEmbeddedList(dtos);
 
-    }
+	}
 
-    @Override
-    public PatientResource buildResource(final PatientDTO dto, final boolean detailed) {
-	return dto == null ? null : (detailed ? assembler.toDetailedResource(dto) : assembler.toResource(dto));
+	@Override
+	public PatientResource buildResource(final PatientDTO dto, final boolean detailed) {
+		return dto == null ? null : (detailed ? assembler.toDetailedResource(dto) : assembler.toResource(dto));
 
-    }
+	}
 
-    @Override
-    public Optional<PatientResource> buildResourceAsOptional(final PatientDTO dto, final boolean detailed) {
-	return dto == null ? Optional.ofNullable(null)
-		: (detailed ? Optional.of(assembler.toDetailedResource(dto)) : Optional.of(assembler.toResource(dto)));
+	@Override
+	public Optional<PatientResource> buildResourceAsOptional(final PatientDTO dto, final boolean detailed) {
+		return dto == null ? Optional.ofNullable(null)
+				: (detailed ? Optional.of(assembler.toDetailedResource(dto)) : Optional.of(assembler.toResource(dto)));
 
-    }
+	}
 }

@@ -10,27 +10,30 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author ldicesare
+ * @email ing.dicesare@gmail.com
  *
  */
 @Service
 public class HealtConditionApiServiceImpl implements IHealtConditionApiService<HealtConditionResource> {
-    @Autowired
-    HealtConditionAssembler assembler;
+	@Autowired
+	HealtConditionAssembler assembler;
 
-    @Override
-    public Resources<HealtConditionResource> buildResource(Iterable<HealtConditionDTO> dtos) throws HypermediaGenericException {
-        return assembler.toEmbeddedList(dtos);
-    }
+	@Override
+	public Resources<HealtConditionResource> buildResource(Iterable<HealtConditionDTO> dtos)
+			throws HypermediaGenericException {
+		return assembler.toEmbeddedList(dtos);
+	}
 
-    @Override
-    public HealtConditionResource buildResource(HealtConditionDTO dto, String self) throws HypermediaGenericException {
-        return assembler.toEmbedded(dto, self);
-    }
+	@Override
+	public HealtConditionResource buildResource(HealtConditionDTO dto, String self) throws HypermediaGenericException {
+		return assembler.toEmbedded(dto, self);
+	}
 
-    @Override
-    public HealtConditionResource buildResource(HealtConditionDTO dto, boolean detailed) throws HypermediaGenericException {
-        // TODO Auto-generated method stub
-        return null;
-    }
+	@Override
+	public HealtConditionResource buildResource(HealtConditionDTO dto, boolean detailed)
+			throws HypermediaGenericException {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

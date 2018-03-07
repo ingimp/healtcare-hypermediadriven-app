@@ -13,37 +13,42 @@ import org.springframework.stereotype.Service;
 
 /**
  * @author ldicesare
+ * @email ing.dicesare@gmail.com
  *
  */
 @Service
 public class AllergyBusinessServiceImpl implements IAllergyBusinessService {
-    public static final Logger LOGGER = LoggerFactory.getLogger(AllergyBusinessServiceImpl.class);
-    @Autowired
-    private AllergyRepository allergyRepository;
-    @Autowired
-    private AllergyConverter allergyConverter;
+	public static final Logger LOGGER = LoggerFactory.getLogger(AllergyBusinessServiceImpl.class);
+	@Autowired
+	private AllergyRepository allergyRepository;
+	@Autowired
+	private AllergyConverter allergyConverter;
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.healtcare.hypermediadriven.patient.business.services.IAllergyBusinessService#readAllergiesByPatient(java.lang.String)
-     */
-    @Override
-    public List<AllergyDTO> readAllergiesByPatient(final String patientUUID) throws HypermediaGenericException {
-        LOGGER.info("####^^^^#### - The AllergyBusinessServiceImpl.readAllergiesByPatient(String patientUUID) service is running.");
-        return allergyConverter.convert(allergyRepository.findByPatients_PatientUUID(patientUUID));
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.healtcare.hypermediadriven.patient.business.services.
+	 * IAllergyBusinessService#readAllergiesByPatient(java.lang.String)
+	 */
+	@Override
+	public List<AllergyDTO> readAllergiesByPatient(final String patientUUID) throws HypermediaGenericException {
+		LOGGER.info(
+				"####^^^^#### - The AllergyBusinessServiceImpl.readAllergiesByPatient(String patientUUID) service is running.");
+		return allergyConverter.convert(allergyRepository.findByPatients_PatientUUID(patientUUID));
 
-    }
+	}
 
-    /*
-     * (non-Javadoc)
-     * 
-     * @see org.healtcare.hypermediadriven.patient.business.services.IAllergyBusinessService#readAllergy(java.lang.String)
-     */
-    @Override
-    public AllergyDTO readAllergy(final String allergyUUID) {
-        LOGGER.info("####^^^^#### - The AllergyBusinessServiceImpl.readAllergy(String allergyUUID) service is running.");
-        return allergyConverter.convert(allergyRepository.findByAllergyUUID(allergyUUID));
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.healtcare.hypermediadriven.patient.business.services.
+	 * IAllergyBusinessService#readAllergy(java.lang.String)
+	 */
+	@Override
+	public AllergyDTO readAllergy(final String allergyUUID) {
+		LOGGER.info(
+				"####^^^^#### - The AllergyBusinessServiceImpl.readAllergy(String allergyUUID) service is running.");
+		return allergyConverter.convert(allergyRepository.findByAllergyUUID(allergyUUID));
+	}
 
 }

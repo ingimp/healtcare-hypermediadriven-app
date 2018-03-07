@@ -10,18 +10,23 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * @author ldicesare
+ * @email ing.dicesare@gmail.com
+ *
+ */
 @RestController
 @ExposesResourceFor(HealtCondition.class)
 @RequestMapping(value = "healtcare/hypermediadriven/api/v1/healtconditions", produces = "application/hal+json")
 public class HealtConditionController {
 
-    @GetMapping
-    public ResponseEntity<Resources<HealtConditionResource>> getAllHealtConditions() {
-        return null;
-    }
+	@GetMapping
+	public ResponseEntity<Resources<HealtConditionResource>> getAllHealtConditions() {
+		return null;
+	}
 
-    @GetMapping(value = "/{uuid}")
-    public ResponseEntity<HealtConditionResource> getHealtCondition(@PathVariable(value = "uuid") final String uuid) {
-        return null;
-    }
+	@GetMapping(value = "/{uuid}")
+	public ResponseEntity<HealtConditionResource> getHealtCondition(@PathVariable(value = "uuid") final String uuid) {
+		return null;
+	}
 }
