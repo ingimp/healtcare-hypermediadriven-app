@@ -1,7 +1,9 @@
 package org.healtcare.hypermediadriven.microservices.patient.api.controllers;
 
-import org.healtcare.hypermediadriven.microservices.patient.domain.HealtCondition;
+import org.healtcare.hypermediadriven.microservices.patient.api.services.IHealtConditionApiService;
+import org.healtcare.hypermediadriven.microservices.patient.business.services.IHealtConditionBusinessService;
 import org.healtcare.hypermediadriven.microservices.patient.resources.HealtConditionResource;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.ExposesResourceFor;
 import org.springframework.hateoas.Resources;
 import org.springframework.http.ResponseEntity;
@@ -16,13 +18,18 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
-@ExposesResourceFor(HealtCondition.class)
+@ExposesResourceFor(HealtConditionResource.class)
 @RequestMapping(value = "healtcare/hypermediadriven/api/v1/healtconditions", produces = "application/hal+json")
 public class HealtConditionController {
+	@Autowired
+	private IHealtConditionApiService<HealtConditionResource> healtConditionApiService;
+	@Autowired
+	private IHealtConditionBusinessService healtConditionBusinessService;
 
 	@GetMapping
 	public ResponseEntity<Resources<HealtConditionResource>> getAllHealtConditions() {
-		return null;
+		return ResponseEntity
+				.ok(healtConditionApiService.buildResources(healtConditionBusinessService.readAllHealtConditions()));
 	}
 
 	@GetMapping(value = "/{uuid}")

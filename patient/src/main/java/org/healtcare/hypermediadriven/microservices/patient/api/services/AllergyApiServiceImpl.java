@@ -48,4 +48,9 @@ public class AllergyApiServiceImpl implements IAllergyApiService<AllergyResource
 		return detailed ? assembler.toDetailedResource(dto) : assembler.toResource(dto);
 	}
 
+	@Override
+	public Resources<AllergyResource> buildResources(Iterable<AllergyDTO> dtos) {
+		return dtos == null ? null : assembler.toEmbeddedList(dtos);
+	}
+
 }

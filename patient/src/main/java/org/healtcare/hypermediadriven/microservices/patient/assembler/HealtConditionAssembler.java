@@ -1,7 +1,6 @@
 package org.healtcare.hypermediadriven.microservices.patient.assembler;
 
 import org.healtcare.hypermediadriven.microservices.patient.api.controllers.HealtConditionController;
-import org.healtcare.hypermediadriven.microservices.patient.domain.HealtCondition;
 import org.healtcare.hypermediadriven.microservices.patient.dto.HealtConditionDTO;
 import org.healtcare.hypermediadriven.microservices.patient.resources.HealtConditionResource;
 import org.springframework.hateoas.EntityLinks;
@@ -41,7 +40,7 @@ public class HealtConditionAssembler extends
 
 	@Override
 	public Link linkToSingleResource(HealtConditionDTO entity) {
-		return entityLinks.linkToSingleResource(HealtCondition.class, entity.getHealtConditionUUID());
+		return entityLinks.linkToSingleResource(HealtConditionResource.class, entity.getHealtConditionUUID());
 	}
 
 }

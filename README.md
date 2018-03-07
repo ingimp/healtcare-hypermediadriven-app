@@ -19,7 +19,11 @@ change to the docker-compose directory in your source code.  Issue the following
 If everything starts correctly you should see a bunch of spring boot information fly by on standard out.  At this point all of the services needed for the chapter code examples will be running.
 
 # Test the service
-Now that the service is up, visit:  	**http://localhost:8080/healtcare/hypermediadriven/api/v1/patients**
+Now that the service is up, visit:  	**http://localhost:8080/healtcare/hypermediadriven/api/v1/**
+
+# Swagger
+
+For swagger ui: http://localhost:8080/swagger-ui.html
 
 # TIP
 After launching the "docker-compose -f docker/common/docker-compose.yml up" command if you have the following error:

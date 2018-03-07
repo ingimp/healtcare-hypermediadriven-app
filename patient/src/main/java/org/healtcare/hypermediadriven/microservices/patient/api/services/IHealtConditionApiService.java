@@ -36,4 +36,10 @@ public interface IHealtConditionApiService<HealtConditionResource> {
 	 */
 	public HealtConditionResource buildResource(HealtConditionDTO dto, boolean detailed)
 			throws HypermediaGenericException;
+
+	/**
+	 * @param dtos
+	 * @return
+	 */
+	public Resources<HealtConditionResource> buildResources(Iterable<HealtConditionDTO> dtos);
 }

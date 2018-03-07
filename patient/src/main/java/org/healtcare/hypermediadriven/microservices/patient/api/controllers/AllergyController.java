@@ -29,7 +29,7 @@ public class AllergyController {
 
 	@GetMapping
 	public ResponseEntity<Resources<AllergyResource>> getAllAllergies() {
-		return null;
+		return ResponseEntity.ok(allergyApiService.buildResources(allergyBusinessService.readAllAllergies()));
 	}
 
 	/**

@@ -13,6 +13,12 @@ import org.healtcare.hypermediadriven.microservices.patient.exceptions.Hypermedi
 public interface IAllergyBusinessService {
 
 	/**
+	 * @return
+	 * @throws HypermediaGenericException
+	 */
+	public List<AllergyDTO> readAllAllergies() throws HypermediaGenericException;
+
+	/**
 	 * @param patientUUID
 	 * @return
 	 * @throws HypermediaGenericException

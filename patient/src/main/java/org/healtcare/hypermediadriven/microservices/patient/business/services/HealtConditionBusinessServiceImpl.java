@@ -1,5 +1,7 @@
 package org.healtcare.hypermediadriven.microservices.patient.business.services;
 
+import java.util.List;
+
 import org.healtcare.hypermediadriven.microservices.patient.converters.HealtConditionConverter;
 import org.healtcare.hypermediadriven.microservices.patient.domain.HealtCondition;
 import org.healtcare.hypermediadriven.microservices.patient.domain.persistence.HealtConditionRepository;
@@ -39,6 +41,11 @@ public class HealtConditionBusinessServiceImpl implements IHealtConditionBusines
 		LOGGER.info(
 				"####### - Stopped HealtConditionBusinessServiceImpl.readHealtConditionByPatient(String patientUUID) - #######");
 		return dto;
+	}
+
+	@Override
+	public List<HealtConditionDTO> readAllHealtConditions() throws HypermediaGenericException {
+		return healtConditionConverter.convert(healtConditionRepository.findAll());
 	}
 
 }

@@ -36,4 +36,10 @@ public class HealtConditionApiServiceImpl implements IHealtConditionApiService<H
 		return null;
 	}
 
+	@Override
+	public Resources<HealtConditionResource> buildResources(Iterable<HealtConditionDTO> dtos) {
+		return dtos == null ? null : assembler.toEmbeddedList(dtos);
+
+	}
+
 }

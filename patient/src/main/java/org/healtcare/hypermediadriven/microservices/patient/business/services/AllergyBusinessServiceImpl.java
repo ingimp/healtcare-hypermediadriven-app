@@ -27,6 +27,18 @@ public class AllergyBusinessServiceImpl implements IAllergyBusinessService {
 	/*
 	 * (non-Javadoc)
 	 * 
+	 * @see
+	 * org.healtcare.hypermediadriven.microservices.patient.business.services.
+	 * IAllergyBusinessService#readAllAllergies()
+	 */
+	@Override
+	public List<AllergyDTO> readAllAllergies() throws HypermediaGenericException {
+		return allergyConverter.convert(allergyRepository.findAll());
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see org.healtcare.hypermediadriven.patient.business.services.
 	 * IAllergyBusinessService#readAllergiesByPatient(java.lang.String)
 	 */

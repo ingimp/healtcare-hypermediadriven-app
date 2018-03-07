@@ -44,4 +44,11 @@ public interface IAllergyApiService<AllergyResource> {
 	 * @throws HypermediaGenericException
 	 */
 	public Optional<AllergyResource> buildResourceAsOptional(AllergyDTO dto) throws HypermediaGenericException;
+
+	/**
+	 * @param dtos
+	 * @return
+	 * @throws HypermediaGenericException
+	 */
+	public Resources<AllergyResource> buildResources(Iterable<AllergyDTO> dtos) throws HypermediaGenericException;
 }
